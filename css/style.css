@@ -1,0 +1,351 @@
+:root {
+	--main-bg-color: rgb(96 125 139);
+	--secondary-bg-color: rgb(229 234 236);
+	--cel-size: 35px;
+	box-sizing: border-box;
+}
+
+* {
+	letter-spacing: 1px;
+}
+
+body {
+	margin: 0;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+	display: flex;
+}
+
+.main-layout {
+	max-width: 750px;
+	margin: auto;
+	border: 3px solid var(--main-bg-color);
+}
+
+/* status-bar */
+.status-bar {
+	width: -webkit-fill-available;
+	color: white;
+	font-weight: bold;
+	display: grid;
+	grid-template-columns: 0.5fr 3fr 1fr 3.5fr;
+	margin: auto;
+	padding: 0.5rem 1rem;
+	background: var(--main-bg-color);
+	text-align: center;
+	align-items: center;
+	justify-items: center;
+}
+
+.status-bar .info-logo {
+	width: 1.5rem;
+	cursor: pointer;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
+.status-bar .info-logo:hover {
+	border-color: rgba(237, 225, 225, 0.8);
+}
+
+.status-bar .mines,
+.status-bar .timer {
+	margin: 0.5rem;
+	font-weight: bold;
+}
+
+.status-bar .timer {
+	width: 10.5rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.status-bar .circle {
+	width: 1.8rem;
+	height: 1.8rem;
+	background-color: #e81224;
+	border-radius: 50%;
+	border: 3px solid black;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+}
+
+.remove-circle {
+	background-color: none !important;
+	border: none;
+}
+
+.status-bar .circle:hover {
+	border-color: rgba(237, 225, 225, 0.8);
+}
+
+button {
+	font-size: 1.5rem;
+	outline: none;
+	background: none;
+	border: 2px solid white;
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 0.2rem 0.8rem;
+	margin: 0 0.3rem;
+}
+
+button:hover {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+/* message */
+.message {
+	display: block;
+	text-align: center;
+	margin: 0.2rem auto;
+	padding: 0.3rem 0.5rem;
+	background: tomato;
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: bold;
+	color: white;
+	visibility: hidden;
+}
+
+.horizontal-move {
+	transition: all 1.2s;
+}
+
+/* control-panel */
+.control-panel {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+}
+
+.control-panel .hearts,
+.control-panel .hints {
+	text-align: center;
+	font-size: 36px;
+	background: var(--secondary-bg-color);
+}
+
+.control-panel .hearts {
+	border-right: 2px solid var(--main-bg-color);
+}
+
+.control-panel .hints {
+	height: -webkit-fill-available;
+	display: grid;
+	grid-template-columns: repeat(3, 2.2rem);
+	align-items: center;
+	justify-content: center;
+}
+
+.hint-image {
+	cursor: pointer;
+	max-height: 2rem;
+}
+
+/* board */
+.board {
+	margin: 1.25rem auto;
+	border: 3px solid rgb(96 125 139);
+}
+
+.covered {
+	background: var(--main-bg-color);
+}
+
+.blown {
+	background: crimson;
+}
+
+td {
+	cursor: pointer;
+	background: rgb(229 234 236);
+	width: var(--cel-size);
+	height: var(--cel-size);
+	text-align: center;
+}
+
+td:hover {
+	background-color: rgba(229, 234, 236, 0.5);
+}
+
+/* difficulty */
+.difficulty {
+	background: var(--main-bg-color);
+	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	padding: 0.8rem 1rem 0.3rem;
+}
+
+.difficulty .level {
+	color: white;
+	border: none;
+	background: rgba(255, 255, 255, 0.3);
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.difficulty button:hover {
+	background-color: rgba(237, 225, 225, 0.8);
+}
+
+/* buttom-section */
+.bottom-section {
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(2, 1fr);
+	background-color: var(--secondary-bg-color);
+}
+
+.high-scores {
+	margin: 0;
+	padding: 0;
+	color: rgb(39, 74, 75);
+	border-left: 1.25rem solid var(--main-bg-color);
+	border-top: 0.6rem solid var(--main-bg-color);
+	border-bottom: 0.6rem solid var(--main-bg-color);
+	border-right: 1rem solid var(--main-bg-color);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.high-scores-text {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.bottom-section-levels {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.bottom-section-levels li {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.high-scores button {
+	background-color: var(--main-bg-color);
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	margin: 0.5rem 0;
+}
+
+.bottom-section button:hover {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.right-bottom {
+	text-align: right;
+	display: grid;
+	justify-items: center;
+	border-right: 1.25rem solid var(--main-bg-color);
+	border-top: 0.6rem solid var(--main-bg-color);
+	border-bottom: 0.6rem solid var(--main-bg-color);
+	border-left: 1rem solid var(--main-bg-color);
+	align-items: center;
+}
+
+.right-bottom .tooltip {
+	background-color: var(--main-bg-color);
+	color: white;
+	display: inline-block;
+	position: relative;
+	border-bottom: 1px dotted black;
+	font-size: 12px;
+	font-weight: bold;
+	height: 2rem;
+}
+
+.tootip-text {
+	color: rgb(0 0 0);
+	background-color: rgb(255 255 255);
+	z-index: 1;
+	text-align: center;
+	letter-spacing: normal;
+	font-weight: lighter;
+	font-size: 12px;
+	margin: 0 2rem;
+	border-radius: 3px;
+	padding: 0.2rem 0.4rem;
+	position: absolute;
+	bottom: 72%;
+	left: -36%;
+	margin-left: 3rem;
+	transition: opacity;
+	opacity: 0;
+	width: 5rem;
+}
+
+.tooltip:hover .tootip-text {
+	opacity: 1;
+}
+
+.PlaceMinesBtn-active {
+	background: tomato !important;
+	font-size: 50px;
+}
+
+.game-info-container {
+	margin: 1rem 2rem 1rem 2rem;
+	flex-direction: column;
+	align-items: flex-start;
+	border: 8px solid var(--main-bg-color);
+	border-radius: 5px;
+	padding: 1rem;
+}
+
+.info-title h1 {
+	text-align: center;
+	margin: 0;
+}
+
+.flex {
+	display: flex;
+}
+
+.small-circle-para,
+.hints-text {
+	display: flex;
+}
+
+.small-circle {
+	width: 0.8rem;
+	height: 0.8rem;
+	background-color: #e81224;
+	border-radius: 50%;
+	border: 3px solid black;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+	margin: 0 0.3rem;
+}
+
+.hints-text {
+	display: flex;
+	align-items: center;
+}
+
+.hints-image {
+	height: 1.2rem;
+}
+
+.close-info {
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-end;
+}

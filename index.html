@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>My Mine Sweeper</title>
+		<link rel="icon" type="image/png" href="favicon.png" />
+	</head>
+
+	<body onload="initGame()">
+		<div class="game-info-container" hidden>
+			<div class="info-title">
+				<span class="close-info" onclick="closeInfo()">X</span>
+				<h1>Mine Sweeper</h1>
+			</div>
+			<h4>Functionality and Features</h4>
+			<p>•Left click reveals the cell’s content</p>
+			<p>•Right click flags/unflags a suspected cell</p>
+			<strong>Game ends when:</strong>
+			<p>o LOSE: when clicking a mine, all mines should be revealed</p>
+			<p>o WIN: all the mines are flagged, and all the other cells are</p>
+			<p>cases :</p>
+			<p>o MINE – when a mine clicked, this mine revealed</p>
+			<p>o Cell with neighbors – reveal the cell alone</p>
+			<p>o Cell without neighbors – expand it and its 1st degree neighbors</p>
+			<strong>Lives:</strong>
+			<br />
+			<span>The user has 3 LIVES</span>
+			<p>When a MINE is clicked, The Lives counter decrease</p>
+			<strong>Game restart:</strong>
+			<div class="small-circle-para">
+				<span>by pressing the </span>
+				<span class="small-circle"></span>
+				<span> button at the top</span>
+			</div>
+			<br />
+			<strong>Hints:</strong>
+			<div class="hints-text">
+				<span>The player has 3 hints</span>
+				<img class="hints-image" src="/img/hints.PNG" alt="hints" />
+			</div>
+			<p>When hint is active, it start blinking and at that time</p>
+			<p>the user can click an unrevealed cell to see the cell content</p>
+			<p>
+				and its neighbors for 1 second, before it get back to previous state
+			</p>
+			<strong>High Scores:</strong>
+			<br />
+			<span
+				>Previous high Scores records per level are presented on the bottom left
+				side</span
+			>
+			<p>and can be reset by pressing the reset button</p>
+			<strong>Safe click:</strong>
+			<br />
+			<span>The player has 3 Safe-Clicks</span>
+			<p>
+				Clicking the Safe-Click button will mark a covered cell (for a few
+				seconds)
+			</p>
+			<p>that is safe to click (does not contain a MINE)</p>
+			<strong>Place Mines</strong>
+			<br />
+			<span>A mode in which the player first positions the mines (by clicking
+				cells)
+			</span>
+			<p>and then plays</p>
+			<strong>Undo</strong>
+			<br/>
+			<span
+				>each click on that button takes the game back by one step (can go 
+			</span>
+			<p>all the way back to game start)</p>
+		</div>
+		<div class="main-container">
+			<div class="main-layout">
+				<div class="status-bar">
+					<img
+						class="info-logo"
+						onclick="onOpenInfo()"
+						src="/img/info-icon.png"
+						alt="info"
+					/>
+					<div class="mines">
+						Mines Left:
+						<span>0</span>
+					</div>
+					<div class="circle" onclick="restartGame()"></div>
+					<div class="timer">
+						Time Elapsed
+						<span>000</span>
+					</div>
+				</div>
+
+				<div class="message">Test</div>
+				<div class="control-panel">
+					<div class="hearts">♥♥♥</div>
+					<div class="hints">
+						<img class="hint-image" src="img/hint-off.png" alt="hint-off" />
+						<img class="hint-image" src="img/hint-off.png" alt="hint-off" />
+						<img class="hint-image" src="img/hint-off.png" alt="hint-off" />
+					</div>
+				</div>
+
+				<table class="board"></table>
+
+				<div class="difficulty">
+					<button class="level" onclick="setLevel(0)">Beginner</button>
+					<button class="level" onclick="setLevel(1)">Medium</button>
+					<button class="level" onclick="setLevel(2)">Expert</button>
+				</div>
+
+				<div class="bottom-section">
+					<div class="high-scores">
+						<h4 class="high-scores-text">High Scores:</h4>
+						<ul class="bottom-section-levels">
+							<li>Beginner: <span>-</span></li>
+							<li>Medium: <span>-</span></li>
+							<li>Expert: <span>-</span></li>
+						</ul>
+						<button onclick="resetHighScores()">RESET</button>
+					</div>
+
+					<div class="right-bottom">
+						<button class="tooltip" onclick="undoStep()">
+							UNDO
+							<div class="tootip-text">Ctrl-Z</div>
+						</button>
+						<button class="tooltip" onclick="safeBtnClick()">
+							<span>3</span> SAFE CLICKS
+							<div class="tootip-text">Shows 1 safe cell to click</div>
+						</button>
+						<button class="tooltip" onclick="placeMinesBtnClick()">
+							PLACE MINES
+							<div class="tootip-text">Arrange the board yourself</div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/utils.js"></script>
+		<script src="js/safeclick.js"></script>
+		<script src="js/mines.js"></script>
+		<script src="js/hints.js"></script>
+		<script src="js/highscore.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

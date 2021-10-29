@@ -15,14 +15,27 @@ body {
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.main-container {
-	display: flex;
+@media only screen and (min-width: 600px) {
+	.main-container {
+		display: flex;
+	}
 }
 
 .main-layout {
 	max-width: 750px;
 	margin: auto;
 	border: 3px solid var(--main-bg-color);
+	position: relative;
+}
+
+.main-layout .info-logo {
+	width: 1rem;
+	cursor: pointer;
+	border: 1px solid black;
+	border-radius: 50%;
+	position: absolute;
+	left: 0.3rem;
+	top: 0.3rem;
 }
 
 /* status-bar */
@@ -31,20 +44,13 @@ body {
 	color: white;
 	font-weight: bold;
 	display: grid;
-	grid-template-columns: 0.5fr 3fr 1fr 3.5fr;
+	grid-template-columns: 2fr 1fr 2fr;
 	margin: auto;
 	padding: 0.5rem 1rem;
 	background: var(--main-bg-color);
 	text-align: center;
-	align-items: center;
 	justify-items: center;
-}
-
-.status-bar .info-logo {
-	width: 1.5rem;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 50%;
+	align-items: center;
 }
 
 .status-bar .info-logo:hover {
@@ -57,10 +63,41 @@ body {
 	font-weight: bold;
 }
 
-.status-bar .timer {
-	width: 10.5rem;
+.status-bar .mines {
 	display: flex;
+	align-items: center;
+}
+
+.mines-text {
+	text-align: left;
+	display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+	.mines-text {
+		display: flex;
+		flex-direction: column;
+		padding: 0.5rem;
+	}
+	.onWideScreen {
+		display: none;
+	}
+}
+.mines-text h4,
+.timer h4 {
+	margin: 0;
+	padding-right: 0.3rem;
+}
+
+.status-bar .timer {
+	text-align: left;
+	display: flex;
+	align-items: center;
 	justify-content: space-between;
+}
+
+.timer span {
+	margin-left: 0.3rem;
 }
 
 .status-bar .circle {

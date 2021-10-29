@@ -62,32 +62,37 @@
 			<p>that is safe to click (does not contain a MINE)</p>
 			<strong>Place Mines</strong>
 			<br />
-			<span>A mode in which the player first positions the mines (by clicking
+			<span
+				>A mode in which the player first positions the mines (by clicking
 				cells)
 			</span>
 			<p>and then plays</p>
 			<strong>Undo</strong>
-			<br/>
+			<br />
 			<span
-				>each click on that button takes the game back by one step (can go 
+				>each click on that button takes the game back by one step (can go
 			</span>
 			<p>all the way back to game start)</p>
 		</div>
 		<div class="main-container">
 			<div class="main-layout">
+				<img
+					class="info-logo"
+					onclick="onOpenInfo()"
+					src="./img/info-icon.png"
+				/>
 				<div class="status-bar">
-					<img
-						class="info-logo"
-						onclick="onOpenInfo()"
-						src="./img/info-icon.png"
-					/>
 					<div class="mines">
-						Mines Left:
+						<div class="mines-text">
+							<h4>Mines</h4>
+							<h4 class="onWideScreen">Left:</h4>
+						</div>
 						<span>0</span>
 					</div>
 					<div class="circle" onclick="restartGame()"></div>
 					<div class="timer">
-						Time Elapsed
+						<h4 class="onWideScreen">Elapsed</h4>
+						<h4>Time</h4>
 						<span>000</span>
 					</div>
 				</div>

@@ -17,6 +17,15 @@ function safeBtnClick() {
 	renderSafeCell(safeCells);
 	gGame.safeClicks--;
 	renderSafeClicksBtn();
+	const SafeClicksBtnTimeout = setTimeout(() => {
+		const elSafeBtnText = document.querySelectorAll(
+			'.right-bottom .tootip-text'
+		)[0];
+		elSafeBtnText.style.display = 'none';
+		const elSafeBtn = document.querySelectorAll('.right-bottom button')[1];
+		elSafeBtn.style.background='var(--main-bg-color)'
+		clearTimeout(SafeClicksBtnTimeout);
+	}, 2000);
 }
 
 function renderSafeCell(safeCells) {
@@ -30,7 +39,7 @@ function renderSafeCell(safeCells) {
 		let j = safeCells[idx].j;
 		const elCell = document.querySelector(`.cell-${i}-${j}`);
 		elCell.innerHTML = SAFE_CELL;
-    setTimeout(() => {
+		setTimeout(() => {
 			hideSafeCell(elCell);
 		}, 1000);
 	}
@@ -60,5 +69,3 @@ function renderSafeClicksBtn() {
 	const elSafeBtn = document.querySelector('.right-bottom span');
 	elSafeBtn.innerText = gGame.safeClicks;
 }
-
-

@@ -38,16 +38,26 @@ function placeMinesBtnClick() {
 	gIsPlacingMines = !gIsPlacingMines;
 
 	togglePlaceMinesBtnColor();
+	const placeMinesBtnTimeout = setTimeout(() => {
+		const elPlaceMinesBtnText = document.querySelectorAll(
+			'.right-bottom .tootip-text'
+		)[1];
+		elPlaceMinesBtnText.style.display = 'none';
+		
+		clearTimeout(placeMinesBtnTimeout);
+	}, 1000);
 }
 
 function placeMine(pos) {
 	//update Model
+	if(gBoard[pos.i][pos.j].isMine === true) return
+
 	gBoard[pos.i][pos.j].isMine = true;
 	gPlacedMinesCount++;
-  
+
 	// update Dom
 	toggleShowAllCells(gBoard, 'reveal');
-  renderMinesLeft(gPlacedMinesCount);
+	renderMinesLeft(gPlacedMinesCount);
 
 	if (gPlacedMinesCount === gLevel.mines) {
 		gIsPlacingMines = false;
@@ -66,12 +76,5 @@ function placeMine(pos) {
 function togglePlaceMinesBtnColor() {
 	let elPlaceMineBtn = document.querySelectorAll('.right-bottom .tooltip')[2];
 	elPlaceMineBtn.classList.toggle('PlaceMinesBtn-active');
-  return elPlaceMineBtn.classList.contains('PlaceMinesBtn-active');
-}
-
-function removePlaceMinesBtnColor() {
-	let isPlaceMineBtnOn = togglePlaceMinesBtnColor();
-	if (isPlaceMineBtnOn) {
-		togglePlaceMinesBtnColor();
-	}
+	return elPlaceMineBtn.classList.contains('PlaceMinesBtn-active');
 }

@@ -60,7 +60,6 @@ function cellClick(event, elCell) {
 function playOnTouchScreen(event, pos) {
 	touchStart(event);
 	if (gGame.shownCount === 0 && event.touches.length === 1) onGame1stClick(pos);
-	updateGameStatus();
 }
 
 function touchStart(event) {

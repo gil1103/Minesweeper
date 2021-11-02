@@ -321,13 +321,14 @@ td:hover {
 	bottom: 72%;
 	left: -36%;
 	margin-left: 3rem;
-	transition: opacity;
-	opacity: 0;
+  visibility: hidden;
 	width: 5rem;
 }
 
-.tooltip:hover .tootip-text {
-	opacity: 1;
+.tooltip:hover .tootip-text,
+.tooltip:active .tootip-text {
+	transition: 0.2s; 
+  visibility: visible;
 }
 
 .PlaceMinesBtn-active {

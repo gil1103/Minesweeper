@@ -53,7 +53,6 @@ function restartGame() {
 
 	if (!gIsPlacingMinesMod) {
 		gBoard = buildBoard(gLevel.size, gLevel.size);
-		// removePlaceMinesBtnColor();
 	} else {
 		toggleShowAllCells(gBoard, 'cover');
 		updateMinesCounts(gBoard);
@@ -68,7 +67,7 @@ function renderAllButBoard() {
 	renderMinesLeft();
 	renderHighScores();
 	renderHints();
-	// renderSafeClicksBtn(); //todo
+	renderSafeClicksBtn();
 }
 
 function undoStep() {
@@ -79,6 +78,12 @@ function undoStep() {
 	}
 	const gameSave = gGameSaves[gGameSaves.length - 2];
 	renderGameStep(gameSave);
+	gGameSaves.pop();
+	const undoBtnTimeout = setTimeout(() => {
+		const elUndoBtn = document.querySelectorAll('.right-bottom button')[0];
+		elUndoBtn.style.background = 'var(--main-bg-color)';
+		clearTimeout(undoBtnTimeout);
+	}, 1000);
 }
 
 function renderGameStep(gameSave) {
@@ -144,13 +149,11 @@ function gameOver(isVictory) {
 }
 
 function onOpenInfo() {
-	console.log('onopeninfo');
-	document.querySelector('.game-info-container').hidden=false;
-	document.querySelector('.main-container').style.display='none';
+	document.querySelector('.game-info-container').hidden = false;
+	document.querySelector('.main-container').style.display = 'none';
 }
 
 function closeInfo() {
-	console.log('close info');
 	document.querySelector('.game-info-container').hidden = true;
 	document.querySelector('.main-container').style.display = 'flex';
 }
